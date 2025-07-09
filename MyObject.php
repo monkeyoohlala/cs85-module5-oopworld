@@ -1,13 +1,23 @@
 <?php
 
     class Journal {
+        //properties
         public $name;
         public $date;
         public $entry;
         public $media;
-        public $entryCount;
+        public $entryCount = 0;
         public $newEntry;
-        
+
+        //construct
+        public function __construct($name, $entry, $date) {
+            $this->name = $name;
+            $this->entry = $entry;
+            $date = getDate();
+            $this->newEntry = false;
+        }
+
+        //methods
         public function getName () {
             return $this->name . "\n";
         }
@@ -16,10 +26,11 @@
             return date("F-d-Y") . "\n";
         }
         public function getEntry () {
-            return $this->entry;
+            return $this->entry . "\n";
         }
         public function getEntryCount() {
-            return $entryCount . "\n";
+            
+            return $this->entryCount++ . "\n";;
         }
         public function addEntry ($entry) {
             $this->entry = $entry;
@@ -33,22 +44,27 @@
         public function addMedia() {
             $this->media;
         }
-        public display() {
-            
+        public function display() {
+            return $this->getName() . $this->getDate() . $this->getEntryCount() . $this->getEntry ();
         }
         
         
     }
 
-    $day1 = new Journal();
-    $day1->name="Harold";
-    $day1->entry="love";
+    $day1 = new Journal("Harold", "Today..", getDate());
+    echo $day1->display();
+    echo "<br>";
 
-    echo $day1->getName();
-    echo $day1->getDate();
-    echo $day1->addEntry("TEST");
-    echo $day1->deleteEntry();
-    echo $day1->entry;
-    echo $day1->updateEntry("LOVEYOU");
+    $day2 = new Journal("Harold", "I did this and that", getDate());
+    echo $day2->display();
+    // $day1->name="Harold";
+    // $day1->entry="love";
+
+    // echo $day1->getName();
+    // echo $day1->getDate();
+    // echo $day1->addEntry("TEST");
+    // echo $day1->deleteEntry();
+    // echo $day1->entry;
+    // echo $day1->updateEntry("LOVEYOU");
 
 
