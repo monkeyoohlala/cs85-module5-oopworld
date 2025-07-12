@@ -1,4 +1,8 @@
 <?php
+    /*
+        Harold Hong
+        https://github.com/monkeyoohlala/cs85-module5-oopworld
+    */
 
     class Journal {
         //properties
